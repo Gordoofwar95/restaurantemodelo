@@ -13495,7 +13495,7 @@ $_$;
 -- Name: rls_auto_enable(); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION public.rls_auto_enable() RETURNS event_trigger
+CREATE OR REPLACE FUNCTION public.rls_auto_enable() RETURNS event_trigger
     LANGUAGE plpgsql SECURITY DEFINER
     SET search_path TO 'pg_catalog'
     AS $$
