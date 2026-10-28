@@ -15,7 +15,7 @@ const FOTOS = 'demo-fotos-v1';
 const CODIGO = 'demo-codigo-v1';   // trocou o nome = todo aparelho descarta o cache de código antigo (inclusive cópia vazia)
 const LISTA = [/*LISTA-INICIO*/
   'css/estilo-base.css?v=a2117941',
-  'js/app-01-base-e-api.js?v=e1eb224e',
+  'js/app-01-base-e-api.js?v=72034744',
   'js/app-02-abas.js?v=29ba15b6',
   'js/app-03-cadastros.js?v=4436b611',
   'js/app-04-pedidos-entrega.js?v=f1f61509',

@@ -574,8 +574,8 @@ async function fetchContingencia_(opts, ms, repeticoes){
    Reserva: planilha principal (Apps Script). Último recurso: planilha de contingência.
    =================================================================================================== */
 const USAR_SUPABASE_ = true;
-const SUPABASE_URL_ = 'COLE_AQUI_A_URL_DO_SEU_PROJETO_SUPABASE';   // ex.: https://abcdefgh.supabase.co  (Supabase → Project Settings → API)
-const SUPABASE_CHAVE_ = 'COLE_AQUI_A_CHAVE_PUBLICA'; // chave PÚBLICA por desenho (a segurança está nas regras do banco)
+const SUPABASE_URL_ = 'https://uwnfalpbmosuixoegcmm.supabase.co';   // ex.: https://abcdefgh.supabase.co  (Supabase → Project Settings → API)
+const SUPABASE_CHAVE_ = 'sb_publishable_6fZLu5qtM9RV6aQTUBNcCQ_Cch4vM-X'; // chave PÚBLICA por desenho (a segurança está nas regras do banco)
 const SB_SESSAO_KEY_ = 'demoAppSb_v1';
 const SB_DOMINIO_ = '@usuarios.demo.app';
 const SB_DRIVE_FOTO_ = 'https://drive.google.com/uc?export=view&id=';
