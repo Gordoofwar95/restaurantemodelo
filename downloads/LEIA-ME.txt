@@ -1,5 +1,0 @@
-APP DA EQUIPE (ANDROID)
-=======================
-Coloque aqui o arquivo demo-equipe.apk (com esse nome exato).
-Enquanto ele não estiver aqui, o cartão "App da equipe" não aparece na Ajuda.
-Quem vê o botão: só a equipe, no Android, dentro de Ajuda. O cardápio do cliente não tem link nenhum para este arquivo.

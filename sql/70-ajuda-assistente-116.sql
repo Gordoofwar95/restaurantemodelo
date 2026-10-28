@@ -1,0 +1,29 @@
+-- 70 - Assistente (versão 1.16): verbetes novos para as novidades do iFood (avisos, cardápio, avaliações, entregador, indicadores, roteiro). Pode rodar de novo (atualiza o texto).
+-- Desfazer: delete from public.ai_ajuda where slug like 'man-116-%';
+insert into public.ai_ajuda (slug,titulo,palavras_chave,passos,perfis,ativo,grupo,ordem,comuns) values
+($t$man-116-01-ifood-avisos$t$,$t$iFood: avisos (pedido alterado, cancelamento recusado, endereço, devolução)$t$,$t$ifood avisos aviso pedido alterado cliente mudou cancelamento recusado endereço devolvido devolução preparo hora ideal visto notificação$t$,
+$t$Integrações → iFood → "Avisos" junta o que o iFood mandou e pede atenção: o cliente alterou o pedido, o iFood recusou um cancelamento, o cliente mudou o endereço, o pedido voltou para a loja, a hora ideal de começar o preparo e o prazo para responder uma avaliação.
+Cada aviso também chega como notificação. Toque em "Marcar todos como vistos" para limpar. Cancelamento: o motivo real (origem, código e motivo) aparece no pedido, em português.$t$,
+ARRAY['Admin','Operador'],true,'secao',160,$t$Aviso sem leitura fica com a borda laranja. Se um pedido foi alterado, confira os itens antes de preparar.$t$),
+($t$man-116-02-ifood-cardapio$t$,$t$iFood: cardápio no iFood, limites e diagnóstico$t$,$t$ifood cardápio catálogo item não aparece diagnóstico combo grupo complemento nome 100 descrição 500 preço zero enviar lote pausar$t$,
+$t$Integrações → iFood → "Cardápio no iFood". Nome do item até 100 letras e descrição até 500. O preço do item precisa ser maior que zero (só complemento pode ser grátis). Em grupo de complementos o mínimo não pode passar do máximo.
+Combo: marque "combo" e deixe como PRIMEIRO grupo o do item principal. Escolha também o tipo do grupo (escolha, ingredientes, ponto da carne, talheres).
+Item que não aparece no app do iFood: toque em "Diagnóstico". O sistema pergunta ao iFood e mostra o motivo e o que fazer (categoria pausada, item pausado, sem preço, grupo obrigatório sem complemento).$t$,
+ARRAY['Admin'],true,'secao',161,$t$Foto: JPG ou PNG de até 5 MB. Se o iFood recusar, o motivo em português aparece no item.$t$),
+($t$man-116-03-ifood-avaliacoes$t$,$t$iFood: avaliações e como responder$t$,$t$ifood avaliações avaliação nota comentário responder resposta prazo cliente estrelas$t$,
+$t$Integrações → iFood → "Avaliações" mostra nota, comentário, nome do cliente e até quando dá para responder. Escreva a resposta (de 10 a 300 letras), toque em responder e digite a sua senha. A tela mostra se o iFood aceitou ou recusou, e por quê.
+Nota baixa e prazo acabando geram aviso. A "Sugerir resposta" escreve um rascunho que você lê e ajusta antes de enviar.$t$,
+ARRAY['Admin'],true,'secao',162,$t$Resposta curta demais ou longa demais é recusada antes de ir ao iFood.$t$),
+($t$man-116-04-ifood-entregador$t$,$t$iFood: entregador do iFood (Sob Demanda): cotar, chamar, rastrear e cancelar$t$,$t$ifood entregador sob demanda shipping cotação chamar entregador rastreio rastrear código cancelar corrida confiança endereço troca balcão whatsapp cardápio próprio custo$t$,
+$t$Está DESLIGADO por padrão. Contrate "Sob Demanda" no Portal do Parceiro, abra Integrações → iFood → "Entregador do iFood", informe cidade, UF e tempo de preparo e ligue (pede a sua senha).
+Para cada pedido de ENTREGA: "Pedir cotação (grátis)" mostra valor, tempo e distância. "Chamar entregador" cobra a corrida e pede a senha. Pedido que não veio do iFood precisa de endereço completo, CEP e latitude/longitude (no Google Maps, toque e segure no endereço).
+Depois: acompanhe o estado, copie o link de rastreio para o cliente, veja o código de 4 dígitos que o cliente fala ao entregador e o nível de confiança. Troca de endereço pedida pelo cliente: aceite ou negue em até 15 minutos. Cancelar pede a senha (em pedido de fora do iFood, escolha um dos motivos do iFood). O valor da corrida vira despesa "Entregadores".$t$,
+ARRAY['Admin'],true,'secao',163,$t$Cotação vale cerca de 24 horas. Erro do iFood (fora da área, muita demanda, fora do horário) aparece em português.$t$),
+($t$man-116-05-ifood-indicadores$t$,$t$iFood: indicadores (faturamento, ticket, cancelamento) até ontem$t$,$t$ifood indicadores analytics faturamento gmv ticket médio cancelamento canal pagamento dia hora tempo ontem d-1 bi aplicativo relatório$t$,
+$t$Integrações → iFood → "Indicadores (até ontem)". Escolha o período (ou Ontem, 7 dias, 30 dias, Mês passado) e toque em "Buscar no iFood". Aparecem faturamento, pedidos concluídos, ticket médio, % de cancelamento, e quebras por situação, canal, quem entregou, pagamento, dia da semana, hora e tempos médios.
+Os números do iFood chegam com 1 dia de atraso (D-1): hoje nunca aparece. Precisa do Client ID e do Secret de um SEGUNDO aplicativo (categoria BI) do Portal do Desenvolvedor, digitados em Integrações → iFood.$t$,
+ARRAY['Admin'],true,'secao',164,$t$Servem para comparar dias e horários, não para fechar o caixa. Se der 403, o iFood ainda não liberou o Analytics para o aplicativo.$t$),
+($t$man-116-06-ifood-roteiro$t$,$t$iFood: roteiro de homologação por módulo$t$,$t$ifood homologação roteiro módulo passos testar aprovar portal desenvolvedor checklist estado dos módulos$t$,
+$t$Integrações → iFood → "📋 Roteiro de homologação": para cada módulo (acesso, eventos, pedidos, loja, cardápio, avaliações, financeiro, entrega e indicadores) mostra o que fazer, o que mostrar ao iFood e se o módulo já respondeu OK. Use junto com "🩺 Estado dos módulos".$t$,
+ARRAY['Admin'],true,'secao',165,$t$As caixinhas do roteiro ficam só no aparelho em que foram marcadas.$t$)
+on conflict (slug) do update set titulo=excluded.titulo, palavras_chave=excluded.palavras_chave, passos=excluded.passos, perfis=excluded.perfis, ativo=excluded.ativo, grupo=excluded.grupo, ordem=excluded.ordem, comuns=excluded.comuns, atualizado_em=now();
